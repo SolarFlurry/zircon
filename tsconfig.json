@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ES2020",
+    "target": "ES2024",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./build"
+  },
+  "exclude": [ "node_modules", "build" ],
+  "include": [ "src" ]
+}
