@@ -16,13 +16,17 @@ for (const arg of argv) {
     }
 }
 
-if (argv.length <= 2) {zircon.build();exit();};
-
-switch (argv[2]) {
-    case 'help':
-        zircon.help();
-        break;
-    case 'init':
-        zircon.init();
-        break;
+if (argv.length <= 2) {
+    zircon.build()
+} else {
+    switch (argv[2]) {
+        case 'help':
+            zircon.help();
+            break;
+        case 'init':
+            zircon.init();
+            break;
+        default: 
+            throwError(`Unkown command: ${argv[2]}`)
+    }
 }

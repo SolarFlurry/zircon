@@ -1,23 +1,27 @@
 {
   "name": "zircon",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "./build/index.js",
   "bin": {
     "zircon": "./build/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install typescript@latest && npm install && tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "fs-extra": "^11.3.0",
     "npm": "^11.5.2",
+    "uuid": "^11.1.0",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.1.0"
   }
 }

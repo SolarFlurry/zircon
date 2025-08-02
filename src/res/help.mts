@@ -9,5 +9,5 @@ Usage:
 
 zircon              compile the current Zircon project
 zircon init         initilise an empty Zircon project
-zircon -h <command> quick help on <command>
 `
+//zircon -h <command> quick help on <command>
