@@ -45,3 +45,5 @@ zircon init
 cd new_addon
 zircon
 ```
+
+For a more detailed guide, go to the [docs](./docs)

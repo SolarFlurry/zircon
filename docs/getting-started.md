@@ -1,0 +1,44 @@
+# Getting Started with Zircon
+
+> This tutorial assumes you have understanding of Git, NodeJS and Minecraft Addons
+
+To begin with Zircon, first create a project folder and initialise an empty Zircon project.
+```sh
+mkdir hello_addon
+cd hello_addon
+zircon init
+```
+
+The `zircon init` command initialises the project. You should see a file and a some directories, `zirconfig.json`, `.zircon`, `behavior`, `resource` and `scripts`. It is best to leave `.zircon` untouched unless you really know what you are doing.
+
+`behavior`, `resource` and `scripts` are for the actual content of the addons.
+
+---
+
+We will begin by editing `zirconfig.json`. This file includes the options for compiling. Right now, you should see:
+```json
+{
+	"name": "<project name here>",
+	"author": "<your name here>",
+	"danger": {
+		"com_mojang_path": "..."
+	}
+}
+```
+`com_mojang_path` should not be touched. In the future, it will be moved to `.zircon`.
+
+Replace your addon's name with `<project name here>`. Currently, config options are limited to `name` and `author`, but more will be added in the future.
+
+Now you can start developing. the `behavior` folder is for behavior pack content, the `resource` folder is for resource pack content, and the `scripts` folder is for scripts, seperating it from the `behavior` folder for easy TypeScript integration.
+
+> Before you start developing, you **don't** have to add a `manifest.json` for both behavior **and** resource. Zircon automatically generates a manifest based on the compiler configuration defined in `zirconfig.json`, meaning you can save the hassle of writing a manifest.
+
+---
+
+Now that you have some content in your addon, you can compile it. Navigate to your project file and run:
+```sh
+zircon
+```
+Yep, it's as simple as that! Now the addon should appear in Minecraft.
+
+Next, read [Project Structure](./project-structure.md) to understand how to organise a Zircon project.

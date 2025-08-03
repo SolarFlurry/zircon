@@ -18,7 +18,9 @@ export class Zircon {
         manifest.header.name = zirconfig.name
         const packUuid = v4();
         manifest.header.uuid = packUuid;
-        manifest.modules[0].uuid = v4();
+        for (const module of manifest.modules) {
+            module.uuid = v4();
+        }
 
         manifest.metadata.authors[0] = zirconfig.author
 

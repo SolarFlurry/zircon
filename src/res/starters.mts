@@ -20,6 +20,13 @@ export const manifestBP = {
             "type": "data",
             "uuid": "",
             "version": [1, 0, 0]
+        },
+        {
+            "uuid": "",
+            "version": [1, 0, 0],
+            "type": "script",
+            "language": "javascript",
+            "entry": "scripts/main.js",
         }
     ],
     "dependencies": [
@@ -54,6 +61,10 @@ export const manifestRP = {
         {
             "uuid": "",
             "version": [1, 0, 0]
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "2.0.0"
         }
     ],
     "metadata": {
