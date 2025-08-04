@@ -9,7 +9,7 @@ cd hello_addon
 zircon init
 ```
 
-The `zircon init` command initialises the project. You should see a file and a some directories, `zirconfig.json`, `.zircon`, `behavior`, `resource` and `scripts`. It is best to leave `.zircon` untouched unless you really know what you are doing.
+The `zircon init` command initialises the project. You should see a file and some directories, `zirconfig.json`, `.zircon`, `behavior`, `resource` and `scripts`. It is best to leave `.zircon` untouched unless you really know what you are doing.
 
 `behavior`, `resource` and `scripts` are for the actual content of the addons.
 
@@ -18,16 +18,24 @@ The `zircon init` command initialises the project. You should see a file and a s
 We will begin by editing `zirconfig.json`. This file includes the options for compiling. Right now, you should see:
 ```json
 {
-	"name": "<project name here>",
+    "name": "<project name here>",
 	"author": "<your name here>",
-	"danger": {
-		"com_mojang_path": "..."
-	}
+    "description": "",
+	"packs": {
+		"behavior": "./behavior",
+		"resource": "./resource"
+	},
+    "scripts": {
+        "entry": "main.js"
+    },
+    "compileTo": [
+		"..."
+	]
 }
 ```
-`com_mojang_path` should not be touched. In the future, it will be moved to `.zircon`.
+Replace your addon's name with `<project name here>`. Currently, config options are limited to `name`,`author`, `description` and `compileTo` but more will be added in the future.
 
-Replace your addon's name with `<project name here>`. Currently, config options are limited to `name` and `author`, but more will be added in the future.
+As you may have guessed, put your alias in `author` and your addon's description in `description`.
 
 Now you can start developing. the `behavior` folder is for behavior pack content, the `resource` folder is for resource pack content, and the `scripts` folder is for scripts, seperating it from the `behavior` folder for easy TypeScript integration.
 
@@ -40,5 +48,24 @@ Now that you have some content in your addon, you can compile it. Navigate to yo
 zircon
 ```
 Yep, it's as simple as that! Now the addon should appear in Minecraft.
+
+---
+
+When using TypeScript, sometimes you will find that you have to repeatedly type:
+```sh
+tsc
+zircon
+```
+
+or `tsc && zircon`
+
+While it is not too much of an issue, Zircon has a flag that will run `tsc` before compiling the project.
+```
+zircon -t
+```
+
+This directly runs the `tsc` command, and has no difference from `tsc && zircon`
+
+---
 
 Next, read [Project Structure](./project-structure.md) to understand how to organise a Zircon project.

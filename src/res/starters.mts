@@ -1,9 +1,30 @@
-export const zirconfig = {
-    "name": "<project name here>",
-    "author": "<your name here>",
-    "danger": {
-        "com_mojang_path": ""
+export interface Zirconfig {
+    "name": string
+    "author": string
+    "description": string
+    "packs": {
+        "behavior": string
+        "resource": string
     }
+    "scripts": {
+        "enable_beta"?: boolean
+        "entry": string
+    }
+    "compileTo": ("stable" | "preview" | "edu" | "edu-preview")[]
+}
+
+export const zirconfig: Zirconfig = {
+    "name": "<project name here>",
+	"author": "<your name here>",
+    "description": "",
+	"packs": {
+		"behavior": "./behavior",
+		"resource": "./resource"
+	},
+    "scripts": {
+        "entry": "main.js"
+    },
+    "compileTo": []
 }
 
 export const manifestBP = {
@@ -32,7 +53,11 @@ export const manifestBP = {
     "dependencies": [
         {
             "uuid": "",
-            "version": [1, 0, 0]
+            "version": [1, 0, 0],
+        },
+        {
+            "module_name": "@minecraft/server",
+            "version": "2.0.0"
         }
     ],
     "metadata": {
@@ -61,10 +86,6 @@ export const manifestRP = {
         {
             "uuid": "",
             "version": [1, 0, 0]
-        },
-        {
-            "module_name": "@minecraft/server",
-            "version": "2.0.0"
         }
     ],
     "metadata": {

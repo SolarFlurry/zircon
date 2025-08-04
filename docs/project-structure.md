@@ -6,15 +6,16 @@
 project_root/
 ┣━ node_modules/
 ┣━ src/
-┃  ┣━ main.ts
+┃  ┗━ main.ts
 ┣━ behavior/
-┃  ┣━ ...
+┃  ┗━ ...
 ┣─ resource/
-┃  ┣━ ...
+┃  ┗━ ...
 ┣━ scripts/
 ┣━ .gitignore
 ┣━ package.json
 ┣━ tsconfig.json
+┣━ pack_icon.png
 ┗━ zirconfig.json
 ```
 
@@ -28,4 +29,5 @@ project_root/
 - `.gitignore` - Git ignore file
 - `package.json` - Node package data
 - `tsconfig.json` - Config data for the TypeScript compiler
+- `pack_icon.png` - The icon of the pack
 - `zirconfig.json` - Config data for Zircon

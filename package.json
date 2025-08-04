@@ -1,7 +1,7 @@
 {
   "name": "zircon",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "TypeScript based MCBE compiler tool",
   "main": "./build/index.js",
   "bin": {
     "zircon": "./build/cli.js"
@@ -12,13 +12,12 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "dependencies": {
     "fs-extra": "^11.3.0",
     "npm": "^11.5.2",
-    "uuid": "^11.1.0",
-    "uuidv4": "^6.2.13"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

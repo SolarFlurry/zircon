@@ -2,6 +2,7 @@
 
 import { argv, exit } from 'node:process';
 import { Zircon, throwError } from './index.js';
+import { execSync } from 'node:child_process';
 
 if (!argv[1].endsWith("zircon")) throwError("Run Zircon with 'zircon'. If it does not exist, run 'npm link' in the zircon repository.");
 
@@ -16,7 +17,10 @@ for (const arg of argv) {
     }
 }
 
-if (argv.length <= 2) {
+if (argv.length - flags.length <= 2) {
+    if (flags.includes('t')) {
+        execSync("tsc")
+    }
     zircon.build()
 } else {
     switch (argv[2]) {
@@ -27,6 +31,6 @@ if (argv.length <= 2) {
             zircon.init();
             break;
         default: 
-            throwError(`Unkown command: ${argv[2]}`)
+            throwError(`Unknown command: ${argv[2]}`)
     }
 }
