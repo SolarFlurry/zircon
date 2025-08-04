@@ -9,6 +9,7 @@
 - Added the capability to compile to multiple versions of Minecraft
 - Added the `compileTo` configuration 
 - Added the `description` configuration
+- Added Education Edition support for Windows
 
 ### Fixed:
 - Fixed a bug where building the project would change the uuid

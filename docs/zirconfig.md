@@ -44,5 +44,8 @@ Can include:
 - `edu`
 - `edu-preview`
 
-Currently, Windows only supports `stable` and MacOS only supports `edu`.
+Currently, Windows only supports `stable` and `edu`, and MacOS only supports `edu`.
 
+---
+
+Next, read [Project Structure](./project-structure.md) for a better understand of Zircon project structure.

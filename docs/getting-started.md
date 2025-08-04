@@ -68,4 +68,4 @@ This directly runs the `tsc` command, and has no difference from `tsc && zircon`
 
 ---
 
-Next, read [Project Structure](./project-structure.md) to understand how to organise a Zircon project.
+Next, read [Zirconfig Rundown](./zirconfig.md) for a detailed explanation of `zirconfig.json`.

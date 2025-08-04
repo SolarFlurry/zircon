@@ -12,9 +12,11 @@ Occasionally features from later updates may be introduced earlier and features 
 - Project ID (PID) initialisation for compilation
 - `zircon audit` - checks for errors in `zirconfig.json`
 - Better Error-Handling system
+- Script `entry` configuration
 
 ## Zircon v`0.3`
 - Minecraft Preview support for PC
+- Minecraft Education Preview support for both PC and MacOS
 
 ### Past Versions
 ---

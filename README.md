@@ -14,7 +14,7 @@ Zircon is a TypeScript based Minecraft Bedrock Addons compiler that seperates th
 
 Zircon currently supports:
 - MacOS (Minecraft Education)
-- Windows (Minecraft Bedrock)
+- Windows (Minecraft Bedrock & Education)
 
 > NOTE: Zircon for Windows does not support Education Edition
 
