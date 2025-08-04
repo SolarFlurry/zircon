@@ -1,6 +1,14 @@
 # Changelog
 
-## v`0.1.0` - 4 Aug 2025
+## Hotfix `v0.1.3` - 4 Aug 2025
+### Features:
+- Puts the name of the Zircon project in the `name` configuration automatically
+
+### Fixed:
+- Fixed whole new addon created when changing the `name` configuration
+- Fixed `pack_icon` not being copied on first compile
+
+## Major `v0.1.0` - 4 Aug 2025
 ### Features:
 - Added `@minecraft/server-ui` support
 - Automatically generates a pack icon when initialising
@@ -22,7 +30,7 @@
 - Moved `com_mojang_path` definition from `zirconfig.json` to `.zircon`
 
 
-## v`0.0.1` - 3 Aug 2025
+## Major `v0.0.1` - 3 Aug 2025
 
 ### Features:
 - Added command `init`

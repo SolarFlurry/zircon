@@ -24,7 +24,6 @@ if you are using MacOS, `stable` should be replaced with `edu`.
 
 ### `name`:
 Specifies what the name of the addon should be.
-> BUG: Changing this value after initial compiling will create a whole different addon
 
 ### `author`:
 Specifies the author of the addon.

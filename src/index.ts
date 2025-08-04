@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 import fs from 'node:fs';
 import fse from 'fs-extra';
-import { exit, env } from 'node:process';
+import { exit, env, cwd } from 'node:process';
 import os from 'node:os';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -62,6 +62,12 @@ export class Zircon {
         if (!fs.existsSync('.zircon')) {
             fs.mkdir(".zircon", (err) => {
                 if (err) throwError("Error creating '.zircon'");
+                fs.writeFile('.zircon/com_mojang_dir.json', JSON.stringify(ucom_mojang_dir), (err) => {
+                    if (err) throwError("Error: config files could not be created");
+                })
+                fs.writeFile('.zircon/pid.txt', path.basename(cwd()).replace(/\s+/g, '_'), (err) => {
+                    if (err) throwError("Error: config files could not be created");
+                })
             })
         }
         const ucom_mojang_dir = com_mojang_dir;
@@ -76,9 +82,6 @@ export class Zircon {
             default:
                 throwError("Zircon does not support your platform")
         }
-                fs.writeFile('.zircon/com_mojang_dir.json', JSON.stringify(ucom_mojang_dir), (err) => {
-                    if (err) throwError("Error: config files could not be created")
-                })
         if (!fs.existsSync('behavior')) {
             fs.mkdir("behavior", (err) => {
                 if (err) throwError("Error creating 'behavior'")
@@ -106,6 +109,7 @@ export class Zircon {
             } else {
                 uZirconfig.compileTo.push("stable")
             }
+            uZirconfig.name = path.basename(cwd())
         }
         fs.writeFile("zirconfig.json", JSON.stringify(uZirconfig, null, '\t'), (err) => {
             if (err) throwError("Error writing to 'zirconfig.json'")
@@ -132,6 +136,7 @@ export class Zircon {
         console.log("Compiling Project...")
         if (!fs.existsSync('.zircon')) throwError("Error: Use 'zircon init' to initialise a Zircon project");
         const com_mojang_dir = JSON.parse(fs.readFileSync('.zircon/com_mojang_dir.json', 'utf8'))
+        const PID: string = fs.readFileSync('.zircon/pid.txt', 'utf8')
 
         const com_mojang_path: string = com_mojang_dir[gameVer]
 
@@ -144,16 +149,16 @@ export class Zircon {
         let manifestBP;
         let manifestRP;
         
-        if ((!fs.existsSync(`${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/manifest.json`))
-        || (!fs.existsSync(`${com_mojang_path}development_resource_packs/${zirconfig.name.replace(/\s+/g, '')}RP/manifest.json`))) {
+        if ((!fs.existsSync(`${com_mojang_path}development_behavior_packs/${PID}BP/manifest.json`))
+        || (!fs.existsSync(`${com_mojang_path}development_resource_packs/${PID}RP/manifest.json`))) {
             uuidBP = v4();
             uuidRP = v4();
 
             manifestBP = this.generateManifestBP(zirconfig, uuidRP)
             manifestRP = this.generateManifestRP(zirconfig, uuidBP)
         } else {
-            manifestBP = JSON.parse(fs.readFileSync(`${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/manifest.json`, 'utf8'))
-            manifestRP = JSON.parse(fs.readFileSync(`${com_mojang_path}development_resource_packs/${zirconfig.name.replace(/\s+/g, '')}RP/manifest.json`, 'utf8'))
+            manifestBP = JSON.parse(fs.readFileSync(`${com_mojang_path}development_behavior_packs/${PID}BP/manifest.json`, 'utf8'))
+            manifestRP = JSON.parse(fs.readFileSync(`${com_mojang_path}development_resource_packs/${PID}RP/manifest.json`, 'utf8'))
 
             uuidBP = manifestBP.header.uuid
             uuidRP = manifestRP.header.uuid
@@ -168,31 +173,33 @@ export class Zircon {
 
         if (!fs.existsSync(com_mojang_path)) throwError("Error: com.mojang path does not exist. Please run 'zircon init' to re-initalise.");
 
-        fse.copy("behavior", `${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/`).then(() => {
-            fse.copy("scripts", `${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/scripts`).catch((err) => {
+        fse.copy("behavior", `${com_mojang_path}development_behavior_packs/${PID}BP/`).then(() => {
+            fse.copy("scripts", `${com_mojang_path}development_behavior_packs/${PID}BP/scripts`).catch((err) => {
                 throwError(err);
             })
-            fs.writeFile(`${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/manifest.json`, JSON.stringify(manifestBP, null, '\t'), (err) => {
+            fs.writeFile(`${com_mojang_path}development_behavior_packs/${PID}BP/manifest.json`, JSON.stringify(manifestBP, null, '\t'), (err) => {
                 if (err) console.log("Error generating BP manifest: " + err)
             })
+            if (fs.existsSync("pack_icon.png")) {
+                fs.copyFile("pack_icon.png", `${com_mojang_path}development_behavior_packs/${PID}BP/pack_icon.png`, (err) => {
+                    if (err) console.log("Error: Could not copy the pack icon: " + err)
+                })
+            }
         }).catch((err) => {
             throwError(err);
         })
-        fse.copy("resource", `${com_mojang_path}development_resource_packs/${zirconfig.name.replace(/\s+/g, '')}RP/`).then(() => {
-            fs.writeFile(`${com_mojang_path}development_resource_packs/${zirconfig.name.replace(/\s+/g, '')}RP/manifest.json`, JSON.stringify(manifestRP, null, '\t'), (err) => {
+        fse.copy("resource", `${com_mojang_path}development_resource_packs/${PID}RP/`).then(() => {
+            fs.writeFile(`${com_mojang_path}development_resource_packs/${PID}RP/manifest.json`, JSON.stringify(manifestRP, null, '\t'), (err) => {
                 if (err) console.log("Error generating RP manifest: " + err)
             })
+            if (fs.existsSync('pack_icon.png')) {
+                fs.copyFile("pack_icon.png", `${com_mojang_path}development_resource_packs/${PID}RP/pack_icon.png`, (err) => {
+                    if (err) console.log("Error: Could not copy the pack icon: " + err)
+                })
+            }
         }).catch((err) => {
             throwError(err);
         })
-        if (fs.existsSync("pack_icon.png")) {
-            fs.copyFile("pack_icon.png", `${com_mojang_path}development_behavior_packs/${zirconfig.name.replace(/\s+/g, '')}BP/pack_icon.png`, (err) => {
-                if (err) console.log("Error: Could not copy the pack icon: " + err)
-            })
-            fs.copyFile("pack_icon.png", `${com_mojang_path}development_resource_packs/${zirconfig.name.replace(/\s+/g, '')}RP/pack_icon.png`, (err) => {
-                if (err) console.log("Error: Could not copy the pack icon: " + err)
-            })
-        }
     }
     help(): void {
         console.log(helpMessage)
