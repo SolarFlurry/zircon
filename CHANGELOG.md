@@ -1,5 +1,12 @@
 # Changelog
 
+## Minor `v0.1.7` - 5 Aug 2025
+### Features:
+- More robust error-handling system
+- Added RP and BP path configuration
+- Added addon version configuration
+- Added script `enable_beta` configuration
+
 ## Hotfix `v0.1.3` - 4 Aug 2025
 ### Features:
 - Puts the name of the Zircon project in the `name` configuration automatically

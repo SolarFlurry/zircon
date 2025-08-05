@@ -1,6 +1,6 @@
 {
   "name": "zircon",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "description": "TypeScript based MCBE compiler tool",
   "main": "./build/index.js",
   "bin": {

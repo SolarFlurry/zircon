@@ -16,8 +16,6 @@ Zircon currently supports:
 - MacOS (Minecraft Education)
 - Windows (Minecraft Bedrock & Education)
 
-> NOTE: Zircon for Windows does not support Education Edition
-
 ## Installing Zircon - Command Line
 Dependencies:
 - Git

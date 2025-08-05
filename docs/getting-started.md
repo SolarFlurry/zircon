@@ -18,24 +18,25 @@ The `zircon init` command initialises the project. You should see a file and som
 We will begin by editing `zirconfig.json`. This file includes the options for compiling. Right now, you should see:
 ```json
 {
-    "name": "<project name here>",
+	"name": "...",
 	"author": "<your name here>",
-    "description": "",
+	"version": [1, 0, 0],
+	"description": "",
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
 	},
-    "scripts": {
-        "entry": "main.js"
-    },
-    "compileTo": [
+	"scripts": {
+		"entry": "main.js"
+	},
+	"compileTo": [
 		"..."
 	]
 }
 ```
-Replace your addon's name with `<project name here>`. Currently, config options are limited to `name`,`author`, `description` and `compileTo` but more will be added in the future.
+Replace your addon's name with `<project name here>`. For more info on this file, go [here](./zirconfig.md).
 
-As you may have guessed, put your alias in `author` and your addon's description in `description`.
+As you may have guessed, put your alias in `author`, your addon's description in `description` and your addon's version in `version`.
 
 Now you can start developing. the `behavior` folder is for behavior pack content, the `resource` folder is for resource pack content, and the `scripts` folder is for scripts, seperating it from the `behavior` folder for easy TypeScript integration.
 
