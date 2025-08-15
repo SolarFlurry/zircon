@@ -6,8 +6,6 @@ import { execSync } from 'node:child_process';
 
 const zircon = new Zircon();
 
-if (!argv[1].endsWith("zircon")) zircon.error("Run Zircon with 'zircon'. If it does not exist, run 'npm link' in the zircon repository.");
-
 // Get flags
 const flags: string[] = []
 
@@ -18,12 +16,20 @@ for (const arg of argv) {
 }
 
 if (argv.length - flags.length <= 2) {
-	if (flags.includes('t')) {
-		execSync("tsc")
+	// command ran is just 'zircon'
+	if (flags.includes('v')) {
+		console.log(`v0.1.9`)
+	} else {
+		console.log("Use 'zircon help' for help with Zircon")
 	}
-	zircon.build()
 } else {
 	switch (argv[2]) {
+		case 'build':
+			if (flags.includes('t')) {
+				execSync("tsc")
+			}
+			zircon.build();
+			break;
 		case 'help':
 			zircon.help();
 			break;

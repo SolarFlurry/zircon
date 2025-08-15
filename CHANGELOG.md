@@ -1,5 +1,15 @@
 # Changelog
 
+## Minor `v0.1.9` - 15 Aug 2025
+### Features:
+- Added the `-v` flag to `zircon` to display the current Zircon version
+
+### Fixed:
+- Fixed an error that would occur when using Windows
+
+### Changed:
+- Changed the build command from `zircon` to `zircon build`
+
 ## Minor `v0.1.7` - 5 Aug 2025
 ### Features:
 - More robust error-handling system
