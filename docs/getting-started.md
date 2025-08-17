@@ -20,17 +20,20 @@ We will begin by editing `zirconfig.json`. This file includes the options for co
 {
 	"name": "...",
 	"author": "<your name here>",
-	"description": "",
+	"description": "<project description here>",
 	"version": [1, 0, 0],
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
 	},
 	"scripts": {
-		"entry": "main.js"
+		"entry": "scripts/main.js"
 	},
 	"compileTo": [
-		"..."
+		{
+			"mcVersion": "...",
+			"reqVersion": ["..."]
+		}
 	]
 }
 ```
@@ -46,7 +49,7 @@ Now you can start developing. the `behavior` folder is for behavior pack content
 
 Now that you have some content in your addon, you can compile it. Navigate to your project file and run:
 ```sh
-zircon
+zircon build
 ```
 Yep, it's as simple as that! Now the addon should appear in Minecraft.
 
@@ -55,17 +58,17 @@ Yep, it's as simple as that! Now the addon should appear in Minecraft.
 When using TypeScript, sometimes you will find that you have to repeatedly type:
 ```sh
 tsc
-zircon
+zircon build
 ```
 
-or `tsc && zircon`
+or `tsc && zircon build`
 
 While it is not too much of an issue, Zircon has a flag that will run `tsc` before compiling the project.
-```
-zircon -t
+```sh
+zircon build -t
 ```
 
-This directly runs the `tsc` command, and has no difference from `tsc && zircon`
+This directly runs the `tsc` command, and has no difference from `tsc && zircon build`
 
 ---
 

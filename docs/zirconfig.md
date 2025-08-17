@@ -5,14 +5,14 @@ The `zirconfig.json` file contains compile data for the compiler. Zircon automat
 {
 	"name": "...",
 	"author": "<your name here>",
-	"description": "",
+	"description": "<project description here>",
 	"version": [1, 0, 0],
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
 	},
 	"scripts": {
-		"entry": "main.js"
+		"entry": "scripts/main.js"
 	},
 	"compileTo": [
 		{

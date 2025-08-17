@@ -24,3 +24,5 @@ npm run update
 
 ## Installing Zircon - Prebuilt Binaries
 WIP: [Full Roadmap](./docs/roadmap.md)
+
+Next, read [Getting Started](./getting-started.md)
