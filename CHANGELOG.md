@@ -1,6 +1,23 @@
 # Changelog
 
-## Minor `v0.1.9` - 15 Aug 2025
+## Major `v0.2` - 17 Aug 2025
+### Features:
+- Added script `entry` configuration
+- Added `-c` flag to `zircon init` to open the config CLI
+- Added `server-admin`, `server-net`, `server-gametest` and `debug-utilities` script module support
+- Added `dependencies` script configuration
+- Added minimum required version for individual Minecraft versions
+- Added the `-t` flag to `zircon init` which sets up a TypeScript ready environment
+
+### Fixed:
+- Fixed an error that would occur when running `init` more than once
+- Fixed a bug where removing a file in the project folder would not remove it from the pack directory
+- Fixed an error where enabling beta caused incorrect versions to be generated
+
+### Changed:
+- The `server-ui` module is no longer automatically added to the manifest dependencies
+
+## Minor `v0.1.10` - 15 Aug 2025
 ### Features:
 - Added the `-v` flag to `zircon` to display the current Zircon version
 
@@ -25,7 +42,7 @@
 - Fixed whole new addon created when changing the `name` configuration
 - Fixed `pack_icon` not being copied on first compile
 
-## Major `v0.1.0` - 4 Aug 2025
+## Major `v0.1` - 4 Aug 2025
 ### Features:
 - Added `@minecraft/server-ui` support
 - Automatically generates a pack icon when initialising

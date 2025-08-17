@@ -5,8 +5,8 @@ The `zirconfig.json` file contains compile data for the compiler. Zircon automat
 {
 	"name": "...",
 	"author": "<your name here>",
-	"version": [1, 0, 0],
 	"description": "",
+	"version": [1, 0, 0],
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
@@ -15,7 +15,10 @@ The `zirconfig.json` file contains compile data for the compiler. Zircon automat
 		"entry": "main.js"
 	},
 	"compileTo": [
-		"..."
+		{
+			"mcVersion": "...",
+			"reqVersion": ["..."]
+		}
 	]
 }
 ```
@@ -39,7 +42,15 @@ Specifies the description of the addon.
 Specifies where the behavior and resource pack directories are relative to the project.
 
 ### `scripts`:
-The configuration `enable_beta` is a boolean specifying whether scripts should use beta or not. The configuration `entry` currently does nothing.
+Configurations related to Script API.
+- `entry`: Configuration for script entry
+- `enable_beta`: Determines whether uses Beta APIs or not
+- `debug_utilities`: Determines whether uses `debug-utilities` module
+- `dependencies`: Specifies which script dependencies to use. Can include:
+  - `ui`
+  - `admin`
+  - `gametest`
+  - `net`
 
 ### `compileTo`:
 Specifies which Minecraft versions to compile to.

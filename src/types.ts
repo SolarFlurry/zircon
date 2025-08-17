@@ -1,0 +1,1 @@
+export type MinecraftVersion = "stable" | "edu" | "preview" | "edu-preview"

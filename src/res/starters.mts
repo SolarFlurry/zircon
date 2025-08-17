@@ -1,3 +1,5 @@
+import { MinecraftVersion } from "types"
+
 export interface Zirconfig {
 	"name": string
 	"author": string
@@ -8,10 +10,15 @@ export interface Zirconfig {
 		"resource": string
 	}
 	"scripts": {
+		"dependencies"?: ("ui"|"admin"|"gametest"|"net")[]
 		"enable_beta"?: boolean
+		"debug_utilities"?: boolean
 		"entry": string
 	}
-	"compileTo": ("stable" | "preview" | "edu" | "edu-preview")[]
+	"compileTo": {
+		"mcVersion": MinecraftVersion,
+		"reqVersion": number[]
+	}[]
 }
 
 export interface Manifest {
@@ -25,14 +32,14 @@ export interface Manifest {
 export const zirconfig: Zirconfig = {
 	"name": "<project name here>",
 	"author": "<your name here>",
+	"description": "<project description here>",
 	"version": [1, 0, 0],
-	"description": "",
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
 	},
 	"scripts": {
-		"entry": "main.js"
+		"entry": "scripts/main.js"
 	},
 	"compileTo": []
 }

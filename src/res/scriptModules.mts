@@ -5,22 +5,32 @@ export interface scriptModule {
 }
 */
 
-export const serverStable = {
-	"module_name": "@minecraft/server",
-	"version": "2.0.0"
+export const serverModule = {
+	"edu": {
+		"stable": "2.0.0",
+		"beta": "2.1.0-beta"
+	},
+	"stable": {
+		"stable": "2.1.0",
+		"beta": "2.2.0-beta"
+	}
 }
 
-export const serverUIStable = {
-	"module_name": "@minecraft/server-ui",
-	"version": "2.0.0"
+export const serverUIModule = {
+	"edu": {
+		"stable": "2.0.0",
+		"beta": "2.1.0-beta"
+	},
+	"stable": {
+		"stable": "2.0.0",
+		"beta": "2.1.0-beta"
+	}
 }
 
-export const serverBeta = {
-	"module_name": "@minecraft/server",
-	"version": "2.3.0-beta"
-}
+export const serverAdminModule = "1.0.0-beta"
 
-export const serverUIBeta = {
-	"module_name": "@minecraft/server-ui",
-	"version": "2.1.0-beta"
-}
+export const serverNetModule = "1.0.0-beta"
+
+export const serverGametestModule = "1.0.0-beta"
+
+export const debugUtilitiesModule = "1.0.0-beta"

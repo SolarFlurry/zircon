@@ -2,7 +2,9 @@
 
 import { argv, exit } from 'node:process';
 import { Zircon } from './index.js';
-import { execSync } from 'node:child_process';
+import { execSync, exec } from 'node:child_process';
+import { tsconfig } from './res/tsconfig.mjs'
+import fs from 'node:fs'
 
 const zircon = new Zircon();
 
@@ -18,7 +20,7 @@ for (const arg of argv) {
 if (argv.length - flags.length <= 2) {
 	// command ran is just 'zircon'
 	if (flags.includes('v')) {
-		console.log(`v0.1.9`)
+		console.log(`v0.2.0`)
 	} else {
 		console.log("Use 'zircon help' for help with Zircon")
 	}
@@ -34,7 +36,24 @@ if (argv.length - flags.length <= 2) {
 			zircon.help();
 			break;
 		case 'init':
+			if (flags.includes('t')) {
+				exec("npm init -y")
+				fs.mkdir("src", (err) => {
+					if (err) zircon.error("Could not create src directory")
+					fs.writeFile("src/main.ts", "import { world, system } from '@minecraft/server'", (err) => {
+						if (err) zircon.error("Could not create 'main.ts'")
+					})
+				})
+				fs.writeFile("tsconfig.json", JSON.stringify(tsconfig), (err) => {
+					if (err) zircon.error("Could not create 'tsconfig.json'")
+				})
+			}
 			zircon.init();
+			if (flags.includes('c')) {
+				zircon.initCLI()
+			} else {
+				zircon.initAuto()
+			}
 			break;
 		default: 
 			zircon.error(`Unknown command: ${argv[2]}`)

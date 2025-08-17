@@ -7,34 +7,20 @@
 
 ---
 
+<big align="center">Smooth Git integration, Superfast TypeScript setup, <strong>All with just <i>one</i> command</strong></big>
+
 ## What is Zircon?
 Zircon is a TypeScript based Minecraft Bedrock Addons compiler that seperates the project files from the minecraft (`com.mojang`) files, allowing easy Git repository management and TypeScript development.
 
 <small>(Also [Regolith](https://github.com/Bedrock-OSS/Regolith) is a similar tool that is much, much more powerful thanks to its filter system, its way better and faster than Zircon, use Regolith.)</small>
 
+Zircon is currently heavily in development, breaking changes are frequent.
+
 Zircon currently supports:
 - MacOS (Minecraft Education)
 - Windows (Minecraft Bedrock & Education)
 
-## Installing Zircon - Command Line
-Dependencies:
-- Git
-- NodeJS
-
-### 1. Get Zircon:
-```sh
-git clone https://github.com/SolarFlurry/zircon
-cd zircon
-```
-
-### 2. Build:
-```sh
-npm run build
-npm link
-```
-
-## Installing Zircon - Prebuilt Binaries
-WIP: [Full Roadmap](./docs/roadmap.md)
+### [For TypeScript Developers](./docs/typescript.md)
 
 ## Using Zircon:
 

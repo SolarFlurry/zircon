@@ -20,7 +20,7 @@ project_root/
 ```
 
 - `project_root` - The root of the entire project
-- `node_modules` - NodeJS modules, usually includes the `@minecraft/server` and `@minecraft/server-ui` modules
+- `node_modules` - NodeJS modules, usually includes the Script API modules
 - `src` - Where your TypeScript files go
 - `main.ts` - The entry-point of the Script API
 - `behavior` - Your behavior pack files

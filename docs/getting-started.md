@@ -20,8 +20,8 @@ We will begin by editing `zirconfig.json`. This file includes the options for co
 {
 	"name": "...",
 	"author": "<your name here>",
-	"version": [1, 0, 0],
 	"description": "",
+	"version": [1, 0, 0],
 	"packs": {
 		"behavior": "./behavior",
 		"resource": "./resource"
