@@ -1,4 +1,4 @@
-import { MinecraftVersion } from "types"
+import { BuildTarget } from "types"
 
 export interface Zirconfig {
 	"name": string
@@ -16,8 +16,9 @@ export interface Zirconfig {
 		"entry": string
 	}
 	"compileTo": {
-		"mcVersion": MinecraftVersion,
-		"reqVersion": number[]
+		"target": BuildTarget,
+		"reqVersion": number[],
+		"local"?: boolean
 	}[]
 }
 

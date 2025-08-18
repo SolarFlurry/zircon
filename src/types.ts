@@ -1,1 +1,1 @@
-export type MinecraftVersion = "stable" | "edu" | "preview" | "edu-preview"
+export type BuildTarget = "standard" | "edu" | "preview" | "edu-preview"

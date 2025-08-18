@@ -1,5 +1,16 @@
 # Changelog
 
+## Minor `v0.2.x` - beta
+### Features:
+- Added the `local` configuration in `compileTo` which controls which directory will be treated as `com_mojang`
+
+### Fixed:
+- Fixed a bug where `.zircon` files would not be re-initilised
+
+### Changed:
+- Renamed `mcVersion` config to `target`
+- Renamed `stable` Minecraft version to `standard`
+
 ## Major `v0.2` - 17 Aug 2025
 ### Features:
 - Added script `entry` configuration
