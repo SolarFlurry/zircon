@@ -1,9 +1,17 @@
-<h1 align="center">Zircon</h1>
-<p align="center"><img src="icons/zirconiumIcon_500.svg" height="200"/></p>
+<div align="center">
+<h1>Zircon</h1>
+<p><img src="icons/zirconiumIcon_500.svg" height="200"/></p>
 
-<h3 align="center">Minecraft Bedrock Add-on development compiler built for TypeScript and Git integration </h3>
+<div>
+	<a href="https://github.com/SolarFlurry/zircon/blob/main/COPYING"><img src="https://img.shields.io/github/license/SolarFlurry/zircon.svg?style=flat-square"/></a>
+	<a><img src="https://img.shields.io/github/package-json/v/SolarFlurry/zircon.svg?style=flat-square&color"/></a>
+	<a href="https://github.com/SolarFlurry/zircon/commits/main"><img src="https://img.shields.io/github/commit-activity/m/solarflurry/zircon?style=flat-square&logo=github"/></a>
+</div>
 
-<p align="center"><a href="./docs/"><strong>Go to Documentation</strong></a></p>
+<h3>Minecraft Bedrock Add-on development compiler built for TypeScript and Git integration </h3>
+
+<p><a href="./docs/"><strong>Go to Documentation</strong></a></p>
+</div>
 
 ---
 
