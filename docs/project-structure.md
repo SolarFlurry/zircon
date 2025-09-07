@@ -1,6 +1,7 @@
 # Zircon Project Structure
 
-> NOTE: You don't have to follow these practices. However, this project structure is how the Zircon compiler *thinks* the project is organised.
+> [!NOTE]
+> You don't have to follow these practices. However, this project structure is how the Zircon compiler *thinks* the project is organised.
 
 ```
 project_root/

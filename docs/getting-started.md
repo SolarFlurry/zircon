@@ -1,5 +1,6 @@
 # Getting Started with Zircon
 
+> [!IMPORTANT]
 > This tutorial assumes you have understanding of Git, NodeJS and Minecraft Addons
 
 To begin with Zircon, first create a project folder and initialise an empty Zircon project.
@@ -43,6 +44,7 @@ As you may have guessed, put your alias in `author`, your addon's description in
 
 Now you can start developing. the `behavior` folder is for behavior pack content, the `resource` folder is for resource pack content, and the `scripts` folder is for scripts, seperating it from the `behavior` folder for easy TypeScript integration.
 
+> [!TIP]
 > Before you start developing, you **don't** have to add a `manifest.json` for both behavior **and** resource. Zircon automatically generates a manifest based on the compiler configuration defined in `zirconfig.json`, meaning you can save the hassle of writing a manifest.
 
 ---
