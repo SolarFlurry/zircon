@@ -143,7 +143,7 @@ export class Zircon extends ErrorHandler {
 				ucom_mojang_dir.edu = `${env.HOME}/Library/Application Support/minecraftpe/games/com.mojang/`
 				break;
 			case 'win32':
-				ucom_mojang_dir.stable = `${env.LOCALAPPDATA}/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang/`
+				ucom_mojang_dir.stable = `${env.APPDATA}/Minecraft Bedrock/Users/Shared/games/com.mojang/`
 				ucom_mojang_dir.edu = `${env.LOCALAPPDATA}/Packages/Microsoft.MinecraftEducationEdition_8wekyb3d8bbwe/LocalState/games/com.mojang/`
 				break;
 			default:
