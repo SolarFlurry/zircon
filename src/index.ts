@@ -126,17 +126,6 @@ export class Zircon extends ErrorHandler {
 		return manifest
 	}
 	init(): void {
-		if (!fs.existsSync('.zircon')) {
-			fs.mkdir(".zircon", (err) => {
-				if (err) this.error("Config files could not be generated", true);
-				fs.writeFile('.zircon/com_mojang_dir.json', JSON.stringify(ucom_mojang_dir), (err) => {
-					if (err) this.error("Config files could not be generated", true);
-				})
-				fs.writeFile('.zircon/pid.txt', path.basename(cwd()).replace(/\s+/g, '_'), (err) => {
-					if (err) this.error("Config files could not be generated", true);
-				})
-			})
-		}
 		const ucom_mojang_dir = com_mojang_dir;
 		switch (currentOS) {
 			case 'darwin':
@@ -148,6 +137,17 @@ export class Zircon extends ErrorHandler {
 				break;
 			default:
 				this.error("Zircon does not support your platform.", true);
+		}
+		if (!fs.existsSync('.zircon')) {
+			fs.mkdir(".zircon", (err) => {
+				if (err) this.error("Config files could not be generated", true);
+				fs.writeFile('.zircon/com_mojang_dir.json', JSON.stringify(ucom_mojang_dir), (err) => {
+					if (err) this.error("Config files could not be generated", true);
+				})
+				fs.writeFile('.zircon/pid.txt', path.basename(cwd()).replace(/\s+/g, '_'), (err) => {
+					if (err) this.error("Config files could not be generated", true);
+				})
+			})
 		}
 		if (!fs.existsSync('behavior')) {
 			fs.mkdir("behavior", (err) => {
