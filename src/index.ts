@@ -45,7 +45,7 @@ export class Zircon extends ErrorHandler {
 					case "ui":
 						manifest.dependencies.push({
 							"module_name": "@minecraft/server-ui",
-							"version": serverModule[gameVer][scriptType]
+							"version": serverUIModule[gameVer][scriptType]
 						})
 						break;
 					case "admin":

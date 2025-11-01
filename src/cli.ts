@@ -44,7 +44,7 @@ if (argv.length - flags.length <= 2) {
 						if (err) zircon.error("Could not create 'main.ts'")
 					})
 				})
-				fs.writeFile("tsconfig.json", JSON.stringify(tsconfig), (err) => {
+				fs.writeFile("tsconfig.json", JSON.stringify(tsconfig, null, '\t'), (err) => {
 					if (err) zircon.error("Could not create 'tsconfig.json'")
 				})
 			}
