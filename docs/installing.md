@@ -7,7 +7,7 @@ Dependencies:
 
 ### 1. Get Zircon:
 ```sh
-git clone https://github.com/SolarFlurry/zircon
+git clone --single-branch --branch main https://github.com/SolarFlurry/zircon
 cd zircon
 ```
 

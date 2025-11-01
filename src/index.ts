@@ -16,10 +16,10 @@ import { com_mojang_dir } from './res/zirconHidden.mjs';
 import { helpMessage } from './res/help.mjs'
 import { serverModule, serverUIModule, debugUtilitiesModule, serverAdminModule, serverNetModule, serverGametestModule } from './res/scriptModules.mjs'
 import { ErrorHandler } from './error.js'
-import { MinecraftVersion } from './types.js'
+import { BuildTarget } from './types.js'
 
 export class Zircon extends ErrorHandler {
-	generateManifestBP(zirconfig: Zirconfig, gameVer: MinecraftVersion, minVer?: number[], uuidRP?: string) {
+	generateManifestBP(zirconfig: Zirconfig, gameVer: BuildTarget, minVer?: number[], uuidRP?: string) {
 		const manifest = manifestBP
 		manifest.header.name = zirconfig.name
 		manifest.header.description = zirconfig.description
@@ -148,7 +148,12 @@ export class Zircon extends ErrorHandler {
 					if (err) this.error("Config files could not be generated", true);
 				})
 			})
+		} else {
+			fs.writeFile('.zircon/com_mojang_dir.json', JSON.stringify(ucom_mojang_dir), (err) => {
+					if (err) this.error("Config files could not be generated", true);
+			})
 		}
+		
 		if (!fs.existsSync('behavior')) {
 			fs.mkdir("behavior", (err) => {
 				if (err) this.error("Failed to create behavior directory")
@@ -179,12 +184,12 @@ export class Zircon extends ErrorHandler {
 			uZirconfig = zirconfig
 			if (currentOS === 'darwin') {
 				uZirconfig.compileTo.push({
-					"mcVersion": "edu",
+					"target": "edu",
 					"reqVersion": [1, 21, 91]
 				})
 			} else {
 				uZirconfig.compileTo.push({
-					"mcVersion": "stable",
+					"target": "standard",
 					"reqVersion": [1, 21, 101]
 				})
 			}
@@ -205,12 +210,12 @@ export class Zircon extends ErrorHandler {
 
 		if (currentOS === 'darwin') {
 			uZirconfig.compileTo.push({
-				"mcVersion": "edu",
+				"target": "edu",
 				"reqVersion": [1, 21, 91]
 			})
 		} else {
 			uZirconfig.compileTo.push({
-				"mcVersion": "stable",
+				"target": "standard",
 				"reqVersion": [1, 21, 101]
 			})
 		}
@@ -237,19 +242,19 @@ export class Zircon extends ErrorHandler {
 			if (err) this.error("Cannot find 'zirconfig.json'", true)
 			const zirconfig: Zirconfig = JSON.parse(data);
 			for (const gameVer of zirconfig.compileTo) {
-				this.buildTo(zirconfig, gameVer.mcVersion, gameVer.reqVersion)
+				this.buildTo(zirconfig, gameVer.target, gameVer.reqVersion, gameVer.local)
 			}
 		})
 	}
-	buildTo(zirconfig: Zirconfig, gameVer: MinecraftVersion, minVer: number[]): void {
+	buildTo(zirconfig: Zirconfig, gameVer: BuildTarget, minVer: number[], local: boolean): void {
 		this.log("Compiling project...")
 		if (!fs.existsSync('.zircon')) this.error("Use 'zircon' in a Zircon project.", true)
 		const com_mojang_dir = JSON.parse(fs.readFileSync('.zircon/com_mojang_dir.json', 'utf8'))
 		const PID: string = fs.readFileSync('.zircon/pid.txt', 'utf8')
 
-		const com_mojang_path: string = com_mojang_dir[gameVer]
+		const com_mojang_path: string = local ? "build/" : com_mojang_dir[gameVer]
 
-		if (!com_mojang_path.endsWith("com.mojang/")) {
+		if (!com_mojang_path.endsWith("com.mojang/") && !local) {
 			this.error(`The 'com.mojang' path for '${gameVer}' is missing! Your OS does not support this Minecraft version.`, true)
 		} else {
 			this.log("Data files fetched.")
@@ -287,7 +292,7 @@ export class Zircon extends ErrorHandler {
 
 		manifestRP.header.uuid = uuidRP
 
-		if (!fs.existsSync(com_mojang_path)) this.error("The com.mojang path does not exist. Please run 'zircon init' to re-initalise.");
+		if (!fs.existsSync(com_mojang_path) && !local) this.error("The com.mojang path does not exist. Please run 'zircon init' to re-initalise.", true);
 
 		fs.rm(`${com_mojang_path}development_behavior_packs/${PID}BP/`, { recursive: true }, (err) => {
 			if (err) {

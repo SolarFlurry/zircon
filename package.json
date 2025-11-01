@@ -1,32 +1,32 @@
 {
-  "name": "zircon",
-  "version": "0.2.0",
-  "description": "TypeScript based MCBE compiler tool",
-  "main": "./build/index.js",
-  "bin": {
-    "zircon": "./build/cli.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install -g typescript@latest && npm install && tsc",
-    "update": "git pull && npm run build"
-  },
-  "keywords": [
-    "minecraft",
-    "bedrock",
-    "zircon"
-  ],
-  "author": "SolarFlurry",
-  "license": "GPL-3.0-or-later",
-  "type": "module",
-  "dependencies": {
-    "fs-extra": "^11.3.0",
-    "npm": "^11.5.2",
-    "typescript": "^5.9.2",
-    "uuid": "^11.1.0"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^24.1.0"
-  }
+	"name": "zircon",
+	"version": "0.2.0",
+	"description": "TypeScript based MCBE compiler tool",
+	"main": "./build/index.js",
+	"bin": {
+		"zircon": "./build/cli.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npm install -g typescript@latest && npm install && tsc",
+		"update": "git pull && npm run build"
+	},
+	"keywords": [
+		"minecraft",
+		"bedrock",
+		"zircon"
+	],
+	"author": "SolarFlurry",
+	"license": "GPL-3.0-or-later",
+	"type": "module",
+	"dependencies": {
+		"fs-extra": "^11.3.0",
+		"npm": "^11.5.2",
+		"typescript": "^5.9.2",
+		"uuid": "^11.1.0"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^24.1.0"
+	}
 }

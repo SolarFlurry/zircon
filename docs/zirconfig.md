@@ -16,7 +16,7 @@ The `zirconfig.json` file contains compile data for the compiler. Zircon automat
 	},
 	"compileTo": [
 		{
-			"mcVersion": "...",
+			"target": "...",
 			"reqVersion": ["..."]
 		}
 	]
